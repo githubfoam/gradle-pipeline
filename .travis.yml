@@ -17,7 +17,7 @@ matrix:
       before_install:
         - java -version
       script:
-        - ./gradlew assemble
+        - sudo bash gradlew assemble
         - ./gradlew check
         - ./gradlew build #Build with Gradle
       after_success:
