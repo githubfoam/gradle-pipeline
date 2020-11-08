@@ -13,15 +13,21 @@ matrix:
       sudo: false
       install: true
       arch: amd64         
-      language: java
-      jdk:
-      - openjdk8
+      # language: java
+      # jdk:
+      # - openjdk8
       # before_install:
       #   - java -version
       # script:
       #   - ./gradlew assemble
       #   - ./gradlew check
       #   - ./gradlew build #Build with Gradle
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          # - '$HOME/.sonar/cache'
+          - '$HOME/.gradle'
+          - '.gradle'      
       after_success:
         - deactivate
 
