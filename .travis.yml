@@ -8,19 +8,19 @@ matrix:
   fast_finish: true
   include:  
 
-    - name: "without committing wrapper files gradle on bionic arm64"
-      dist: bionic
-      sudo: false
-      install: true
-      arch: amd64  
-      language: java
-      jdk:
-      - openjdk8
-      before_install:
-        - cd app2 && ls -lai
-        - gradle -b wrapper.gradle wrapper     
-      after_success:
-        - deactivate
+    # - name: "without committing wrapper files gradle on bionic arm64"
+    #   dist: bionic
+    #   sudo: false
+    #   install: true
+    #   arch: amd64  
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   before_install:
+    #     - cd app2 && ls -lai
+    #     - gradle -b wrapper.gradle wrapper     
+    #   after_success:
+    #     - deactivate
 
     - name: "deploy gradle on bionic arm64"
       dist: bionic
@@ -48,6 +48,36 @@ matrix:
           - '$HOME/.sonar/cache'
           - '$HOME/.gradle'
           - '.gradle'      
+      after_success:
+        - deactivate
+
+        # https://sdkman.io/install
+    - name: "deploy gradle w sdkman on bionic arm64"
+      dist: bionic
+      sudo: false
+      install: true
+      arch: amd64  
+      before_install:
+        - curl -s "https://get.sdkman.io" | bash
+        - source "$HOME/.sdkman/bin/sdkman-init.sh"
+        - sdk version    
+        - sdk install gradle 6.7 
+        - gradle -v
+      after_success:
+        - deactivate
+
+        # https://gradle.org/install/
+    - name: "Installing gradle (homebrew) on macOS 10.15.7 osx xcode12.2"
+      os: osx
+      osx_image:
+        - xcode12.2 #macOS 10.15.7   
+      addons:
+        homebrew:
+          packages:
+          - gradle
+          update: true            
+      script:
+      - gradle -v
       after_success:
         - deactivate
 
