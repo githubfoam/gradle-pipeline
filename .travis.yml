@@ -9,7 +9,9 @@ matrix:
   include:  
 
     - name: "deploy gradle on bionic arm64"
-      dist: xenial
+      dist: bionic
+      sudo: false
+      install: true
       arch: amd64         
       language: java
       jdk:
