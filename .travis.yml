@@ -1,5 +1,5 @@
 ---
-sudo: required
+# sudo: required
 notifications:
   slack:
     on_failure: always
@@ -17,7 +17,7 @@ matrix:
       before_install:
         - java -version
       script:
-        - sudo bash gradlew assemble
+        - ./gradlew assemble
         - ./gradlew check
         - ./gradlew build #Build with Gradle
       after_success:
