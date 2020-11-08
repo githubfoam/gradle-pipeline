@@ -16,10 +16,10 @@ matrix:
       - openjdk8
       before_install:
         - java -version
-      script:
-        - ./gradlew assemble
-        - ./gradlew check
-        - ./gradlew build #Build with Gradle
+      # script:
+      #   - ./gradlew assemble
+      #   - ./gradlew check
+      #   - ./gradlew build #Build with Gradle
       after_success:
         - deactivate
 
