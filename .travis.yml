@@ -52,36 +52,75 @@ matrix:
       after_success:
         - deactivate
 
-        # https://sdkman.io/install
-    - name: "deploy gradle w sdkman on bionic arm64"
+# https://docs.gradle.org/nightly/userguide/travis-ci.html        
+    - name: "Executing Gradle builds on Travis CI on bionic arm64"
       dist: bionic
+      # https://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure
       sudo: false
-      install: true
-      arch: amd64
-      language: shell
+      install: skip
+      language: java
+      jdk:
+      - openjdk8
+      before_cache:
+      - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+      - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+      # cache the build tool's caches
+      cache:
+        directories:
+          - $HOME/.m2
+          # - $HOME/.gradle
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
       before_install:
         - curl -s "https://get.sdkman.io" | bash
         - source "$HOME/.sdkman/bin/sdkman-init.sh"
         - sdk version    
         - sdk install gradle 6.7 
         - gradle -v
+      # Specify a display with xvfb for UI testing
+      before_script:
+        - "export DISPLAY=:99.0"
+        - "sh -e /etc/init.d/xvfb start"
+        - sleep 3 # give xvfb some time to start        
+      script:
+        - cd app3 && 
+        - ./gradlew build --scan -s
       after_success:
         - deactivate
 
-        # https://gradle.org/install/
-    - name: "Installing gradle (homebrew) on macOS 10.15.7 osx xcode12.2"
-      os: osx
-      osx_image:
-        - xcode12.2 #macOS 10.15.7   
-      addons:
-        homebrew:
-          packages:
-          - gradle
-          update: true            
-      script:
-      - gradle -v
-      after_success:
-        - deactivate
+    # TESTED OK
+    # https://gradle.org/install/
+    # https://sdkman.io/install
+    # - name: "deploy gradle w sdkman on bionic arm64"
+    #   dist: bionic
+    #   sudo: false
+    #   install: true
+    #   arch: amd64
+    #   language: shell
+    #   before_install:
+    #     - curl -s "https://get.sdkman.io" | bash
+    #     - source "$HOME/.sdkman/bin/sdkman-init.sh"
+    #     - sdk version    
+    #     - sdk install gradle 6.7 
+    #     - gradle -v
+    #   after_success:
+    #     - deactivate
+
+    # TESTED OK
+    # https://gradle.org/install/
+    # - name: "Installing gradle (homebrew) on macOS 10.15.7 osx xcode12.2"
+    #   os: osx
+    #   osx_image:
+    #     - xcode12.2 #macOS 10.15.7   
+    #   addons:
+    #     homebrew:
+    #       packages:
+    #       - gradle
+    #       update: true            
+    #   script:
+    #   - gradle -v
+    #   after_success:
+    #     - deactivate
 
     # - name: "deploy blackduckcopilot gradle on bionic arm64"
     #   dist: bionic
