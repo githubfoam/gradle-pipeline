@@ -14,8 +14,8 @@ matrix:
       language: java
       jdk:
       - openjdk8
-      before_install:
-        - java -version
+      # before_install:
+      #   - java -version
       # script:
       #   - ./gradlew assemble
       #   - ./gradlew check
