@@ -9,7 +9,7 @@ matrix:
   include:  
 
     - name: "deploy gradle on bionic arm64"
-      dist: bionic
+      dist: xenial
       arch: amd64         
       language: java
       jdk:
