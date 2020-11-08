@@ -1,0 +1,5 @@
+apply plugin: 'java'
+
+check.doFirst {
+	println "Running gradle v${project.gradle.gradleVersion}"
+}
