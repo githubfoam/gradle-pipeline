@@ -8,6 +8,7 @@ matrix:
   fast_finish: true
   include:  
 
+  # https://github.com/GoogleContainerTools/distroless
     - name: "distroless java on bionic arm64"
       dist: bionic
       sudo: false
@@ -18,7 +19,7 @@ matrix:
       # jdk:
       # - openjdk8
       before_install:
-        - cd distroless
+        - cd distroless/examples/java
       script:
         - docker build -t myapp .
         - docker images ls
