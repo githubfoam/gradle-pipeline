@@ -9,6 +9,44 @@ matrix:
   include:  
 
   # https://github.com/GoogleContainerTools/distroless
+    - name: "distroless python2.x on bionic arm64"
+      dist: bionic
+      sudo: false
+      arch: amd64
+      services:
+        - docker  
+      # language: java
+      # jdk:
+      # - openjdk8
+      before_install:
+        - cd distroless/examples/python
+      script:
+        - docker build -t myapp .
+        - docker images ls
+        - docker run -t myapp
+      after_success:
+        - deactivate
+
+  # https://github.com/GoogleContainerTools/distroless
+    - name: "distroless python3 on bionic arm64"
+      dist: bionic
+      sudo: false
+      arch: amd64
+      services:
+        - docker  
+      # language: java
+      # jdk:
+      # - openjdk8
+      before_install:
+        - cd distroless/examples/python3
+      script:
+        - docker build -t myapp .
+        - docker images ls
+        - docker run -t myapp
+      after_success:
+        - deactivate
+
+  # https://github.com/GoogleContainerTools/distroless
     - name: "distroless java on bionic arm64"
       dist: bionic
       sudo: false
