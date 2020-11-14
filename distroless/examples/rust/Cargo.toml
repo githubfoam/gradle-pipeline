@@ -1,0 +1,4 @@
+[package]
+name = "hello-world-distroless"
+
+[dependencies]
