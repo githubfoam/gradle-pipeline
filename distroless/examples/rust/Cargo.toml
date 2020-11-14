@@ -1,4 +1,5 @@
 [package]
 name = "hello-world-distroless"
+version = "0.1"
 
 [dependencies]
