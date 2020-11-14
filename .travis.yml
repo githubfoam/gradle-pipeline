@@ -8,21 +8,21 @@ matrix:
   fast_finish: true
   include:  
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless .NET on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/dotnet
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless .NET on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/dotnet
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
   # https://github.com/GoogleContainerTools/distroless
     - name: "distroless rust on bionic arm64"
@@ -41,85 +41,85 @@ matrix:
         - deactivate
 
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless c/c++ on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/cc
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless c/c++ on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/cc
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless python2.x on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/python
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless python2.x on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/python
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless python3 on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/python3
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless python3 on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/python3
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless java on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/java
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless java on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/java
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
-  # https://github.com/GoogleContainerTools/distroless
-    - name: "distroless go on bionic arm64"
-      dist: bionic
-      sudo: false
-      arch: amd64
-      services:
-        - docker  
-      before_install:
-        - cd distroless/examples/go
-      script:
-        - docker build -t myapp .
-        - docker images ls
-        - docker run -t myapp
-      after_success:
-        - deactivate
+  # # https://github.com/GoogleContainerTools/distroless
+  #   - name: "distroless go on bionic arm64"
+  #     dist: bionic
+  #     sudo: false
+  #     arch: amd64
+  #     services:
+  #       - docker  
+  #     before_install:
+  #       - cd distroless/examples/go
+  #     script:
+  #       - docker build -t myapp .
+  #       - docker images ls
+  #       - docker run -t myapp
+  #     after_success:
+  #       - deactivate
 
     # - name: "without committing wrapper files gradle on bionic arm64"
     #   dist: bionic
