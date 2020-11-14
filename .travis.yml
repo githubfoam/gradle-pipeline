@@ -8,6 +8,22 @@ matrix:
   fast_finish: true
   include:  
 
+  # https://github.com/GoogleContainerTools/distroless
+    - name: "distroless rust on bionic arm64"
+      dist: bionic
+      sudo: false
+      arch: amd64
+      services:
+        - docker  
+      before_install:
+        - cd distroless/examples/rust
+      script:
+        - docker build -t myapp .
+        - docker images ls
+        - docker run -t myapp
+      after_success:
+        - deactivate
+
 
   # https://github.com/GoogleContainerTools/distroless
     - name: "distroless c/c++ on bionic arm64"
@@ -16,11 +32,8 @@ matrix:
       arch: amd64
       services:
         - docker  
-      # language: java
-      # jdk:
-      # - openjdk8
       before_install:
-        - cd distroless/examples/python
+        - cd distroless/examples/cc
       script:
         - docker build -t myapp .
         - docker images ls
@@ -35,9 +48,6 @@ matrix:
       arch: amd64
       services:
         - docker  
-      # language: java
-      # jdk:
-      # - openjdk8
       before_install:
         - cd distroless/examples/python
       script:
@@ -54,9 +64,6 @@ matrix:
       arch: amd64
       services:
         - docker  
-      # language: java
-      # jdk:
-      # - openjdk8
       before_install:
         - cd distroless/examples/python3
       script:
@@ -73,9 +80,6 @@ matrix:
       arch: amd64
       services:
         - docker  
-      # language: java
-      # jdk:
-      # - openjdk8
       before_install:
         - cd distroless/examples/java
       script:
@@ -92,9 +96,6 @@ matrix:
       arch: amd64
       services:
         - docker  
-      # language: java
-      # jdk:
-      # - openjdk8
       before_install:
         - cd distroless/examples/go
       script:
