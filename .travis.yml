@@ -305,15 +305,35 @@ matrix:
         - gradle -v
         # - chmod +x gradlew
       script:
-        # - cd app4
-        # - chmod +x gradlew
-        # - ./gradlew clean
-        # - "./gradlew clean build"
-        - sudo make deploy-app4
+        - cd app4
+        - chmod +x gradlew
+        - ./gradlew clean
+        - "./gradlew clean build"
       # after_success:
       #   # Upload to CoPilot
       #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
       #   - deactivate
+
+    - name: "deploy blackduckcopilot gradle on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+      directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+      before_install:
+        - java -version
+        - gradle -v
+      script:
+        - sudo make deploy-app4
+      # after_success:
+      #   # Upload to CoPilot
+      #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+      #   - deactivate      
 
     # - name: "deploy codecov gradle on bionic arm64"
     #   dist: bionic
