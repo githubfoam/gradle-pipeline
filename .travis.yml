@@ -296,7 +296,8 @@ matrix:
       before_install:
         - java -version
       script:
-        - sudo make deploy-app4
+        - gradle -v
+        # - sudo make deploy-app4
       # after_success:
       #   # Upload to CoPilot
       #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
