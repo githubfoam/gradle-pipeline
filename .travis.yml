@@ -258,8 +258,11 @@ matrix:
         - 2.10.4
         - 2.11.2
       jdk:
-        - oraclejdk7
-        - oraclejdk8'
+      # Expected feature release number in range of 9 to 16, but got: 7
+        # - oraclejdk7
+        # - oraclejdk8
+        - oraclejdk16
+        - oraclejdk9
       services:
       - mongodb
       script:
@@ -275,6 +278,8 @@ matrix:
       - 2.10.4
       - 2.9.3
       jdk:
+      # Expected feature release number in range of 9 to 16, but got: 
+      - oraclejdk16
       - oraclejdk7
       - openjdk6
       services:
@@ -297,6 +302,8 @@ matrix:
         - java -version
       script:
         - gradle -v
+        - cd app4
+        - "./gradlew clean build"
         # - sudo make deploy-app4
       # after_success:
       #   # Upload to CoPilot
