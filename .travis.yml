@@ -8,119 +8,6 @@ matrix:
   fast_finish: true
   include:  
 
-  # # # https://github.com/GoogleContainerTools/distroless
-  #   - name: "distroless .NET on bionic arm64"
-  #     dist: bionic
-  #     sudo: false
-  #     arch: amd64
-  #     services:
-  #       - docker  
-  #     before_install:
-  #       - cd distroless/examples/dotnet
-  #     script:
-  #       - docker build -t myapp .
-  #       - docker images ls
-  #       - docker run -t myapp
-  #     after_success:
-  #       - deactivate
-
-  # # https://github.com/GoogleContainerTools/distroless
-  #   - name: "distroless rust on bionic arm64"
-  #     dist: bionic
-  #     sudo: false
-  #     arch: amd64
-  #     services:
-  #       - docker  
-  #     before_install:
-  #       - cd distroless/examples/rust
-  #     script:
-  #       - docker build -t myapp .
-  #       - docker images ls
-  #       - docker run -t myapp
-  #     after_success:
-  #       - deactivate
-
-
-  # # # https://github.com/GoogleContainerTools/distroless
-  # #   - name: "distroless c/c++ on bionic arm64"
-  # #     dist: bionic
-  # #     sudo: false
-  # #     arch: amd64
-  # #     services:
-  # #       - docker  
-  # #     before_install:
-  # #       - cd distroless/examples/cc
-  # #     script:
-  # #       - docker build -t myapp .
-  # #       - docker images ls
-  # #       - docker run -t myapp
-  # #     after_success:
-  # #       - deactivate
-
-  # # # https://github.com/GoogleContainerTools/distroless
-  # #   - name: "distroless python2.x on bionic arm64"
-  # #     dist: bionic
-  # #     sudo: false
-  # #     arch: amd64
-  # #     services:
-  # #       - docker  
-  # #     before_install:
-  # #       - cd distroless/examples/python
-  # #     script:
-  # #       - docker build -t myapp .
-  # #       - docker images ls
-  # #       - docker run -t myapp
-  # #     after_success:
-  # #       - deactivate
-
-  # # # https://github.com/GoogleContainerTools/distroless
-  # #   - name: "distroless python3 on bionic arm64"
-  # #     dist: bionic
-  # #     sudo: false
-  # #     arch: amd64
-  # #     services:
-  # #       - docker  
-  # #     before_install:
-  # #       - cd distroless/examples/python3
-  # #     script:
-  # #       - docker build -t myapp .
-  # #       - docker images ls
-  # #       - docker run -t myapp
-  # #     after_success:
-  # #       - deactivate
-
-  # # # https://github.com/GoogleContainerTools/distroless
-  # #   - name: "distroless java on bionic arm64"
-  # #     dist: bionic
-  # #     sudo: false
-  # #     arch: amd64
-  # #     services:
-  # #       - docker  
-  # #     before_install:
-  # #       - cd distroless/examples/java
-  # #     script:
-  # #       - docker build -t myapp .
-  # #       - docker images ls
-  # #       - docker run -t myapp
-  # #     after_success:
-  # #       - deactivate
-
-  # # # https://github.com/GoogleContainerTools/distroless
-  # #   - name: "distroless go on bionic arm64"
-  # #     dist: bionic
-  # #     sudo: false
-  # #     arch: amd64
-  # #     services:
-  # #       - docker  
-  # #     before_install:
-  # #       - cd distroless/examples/go
-  # #     script:
-  # #       - docker build -t myapp .
-  # #       - docker images ls
-  # #       - docker run -t myapp
-  # #     after_success:
-  # #       - deactivate
-
     # - name: "without committing wrapper files gradle on bionic arm64"
     #   dist: bionic
     #   sudo: false
@@ -151,32 +38,32 @@ matrix:
 
 # https://sonarcloud.io/account/security
 # https://docs.travis-ci.com/user/sonarcloud/
-    - name: "deploy gradle w jacoco junit sonarcloud on bionic arm64"
-      dist: bionic
-      sudo: false
-      install: true
-      arch: amd64  
-      addons:
-        sonarcloud:
-          organization: "githubfoam"
-          token:
-            secure: $SONAR_TOKEN
-      language: shell
-      # language: java
-      # jdk:
-      # - openjdk8
-      before_install:
-        - cd app11 && chmod +x gradlew
-      script:
-        - ./gradlew sonarqube
-      cache:
-        directories:
-          - '$HOME/.m2/repository'
-          - '$HOME/.sonar/cache'
-          - '$HOME/.gradle'
-          - '.gradle'      
-      after_success:
-        - deactivate
+    # - name: "deploy gradle w jacoco junit sonarcloud on bionic arm64"
+    #   dist: bionic
+    #   sudo: false
+    #   install: true
+    #   arch: amd64  
+    #   addons:
+    #     sonarcloud:
+    #       organization: "githubfoam"
+    #       token:
+    #         secure: $SONAR_TOKEN
+    #   language: shell
+    #   # language: java
+    #   # jdk:
+    #   # - openjdk8
+    #   before_install:
+    #     - cd app11 && chmod +x gradlew
+    #   script:
+    #     - ./gradlew sonarqube
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.sonar/cache'
+    #       - '$HOME/.gradle'
+    #       - '.gradle'      
+    #   after_success:
+    #     - deactivate
 
 # https://docs.gradle.org/nightly/userguide/travis-ci.html        
     # - name: "Executing Gradle builds on Travis CI on bionic arm64"
@@ -217,36 +104,36 @@ matrix:
     # TESTED OK
     # https://gradle.org/install/
     # https://sdkman.io/install
-    # - name: "deploy gradle w sdkman on bionic arm64"
-    #   dist: bionic
-    #   sudo: false
-    #   install: true
-    #   arch: amd64
-    #   language: shell
-    #   before_install:
-    #     - curl -s "https://get.sdkman.io" | bash
-    #     - source "$HOME/.sdkman/bin/sdkman-init.sh"
-    #     - sdk version    
-    #     - sdk install gradle 6.7 
-    #     - gradle -v
-    #   after_success:
-    #     - deactivate
+    - name: "deploy gradle w sdkman on bionic arm64"
+      dist: bionic
+      sudo: false
+      install: true
+      arch: amd64
+      language: shell
+      before_install:
+        - curl -s "https://get.sdkman.io" | bash
+        - source "$HOME/.sdkman/bin/sdkman-init.sh"
+        - sdk version    
+        - sdk install gradle 6.7 
+        - gradle -v
+      after_success:
+        - deactivate
 
     # TESTED OK
     # https://gradle.org/install/
-    # - name: "Installing gradle (homebrew) on macOS 10.15.7 osx xcode12.2"
-    #   os: osx
-    #   osx_image:
-    #     - xcode12.2 #macOS 10.15.7   
-    #   addons:
-    #     homebrew:
-    #       packages:
-    #       - gradle
-    #       update: true            
-    #   script:
-    #   - gradle -v
-    #   after_success:
-    #     - deactivate
+    - name: "Installing gradle (homebrew) on macOS 10.15.7 osx xcode12.2"
+      os: osx
+      osx_image:
+        - xcode12.2 #macOS 10.15.7   
+      addons:
+        homebrew:
+          packages:
+          - gradle
+          update: true            
+      script:
+      - gradle -v
+      after_success:
+        - deactivate
 
 # TESTED OK
     # - name: "build scala w oracle jdk on bionic arm64"
@@ -289,105 +176,105 @@ matrix:
     #     - echo "test"
 
 
-    - name: "build maven w checkstyle on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required
-      addons:
-        apt:
-          packages:
-            # - ant
-            - xmlstarlet              
-      language: java
-      jdk:
-      - openjdk8
-      cache:
-        directories:
-          - '$HOME/.m2/repository'
-          - '$HOME/.gradle'
-          - '$HOME/.ivy2'
-          # - ~/.ivy2
-      # before_install:
-        # - cd app8 && chmod +x gradlew
-      script:
-        - cd app10 
-        - MVN_SETTINGS=${TRAVIS_HOME}/.m2/settings.xml
-        - xmlstarlet ed --inplace -d "//mirrors" $MVN_SETTINGS
-        - mvn checkstyle:checkstyle -Pgithub-maven-repo
-        - mvn -f pom-google-custom-suppression.xml clean checkstyle:checkstyle -Pgithub-maven-repo
-        - grep "error" target/checkstyle-result.xml
-        - mvn -f pom-google.xml clean checkstyle:checkstyle -Pgithub-maven-repo
-      after_success:
-        # - bash <(curl -s https://codecov.io/bash)
-        - deactivate
+    # - name: "build maven w checkstyle on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required
+    #   addons:
+    #     apt:
+    #       packages:
+    #         # - ant
+    #         - xmlstarlet              
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.gradle'
+    #       - '$HOME/.ivy2'
+    #       # - ~/.ivy2
+    #   # before_install:
+    #     # - cd app8 && chmod +x gradlew
+    #   script:
+    #     - cd app10 
+    #     - MVN_SETTINGS=${TRAVIS_HOME}/.m2/settings.xml
+    #     - xmlstarlet ed --inplace -d "//mirrors" $MVN_SETTINGS
+    #     - mvn checkstyle:checkstyle -Pgithub-maven-repo
+    #     - mvn -f pom-google-custom-suppression.xml clean checkstyle:checkstyle -Pgithub-maven-repo
+    #     - grep "error" target/checkstyle-result.xml
+    #     - mvn -f pom-google.xml clean checkstyle:checkstyle -Pgithub-maven-repo
+    #   after_success:
+    #     # - bash <(curl -s https://codecov.io/bash)
+    #     - deactivate
 
-    - name: "build ant w checkstyle on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required
-      addons:
-        apt:
-          packages:
-            - ant
-            - xmlstarlet              
-      language: java
-      jdk:
-      - openjdk8
-      cache:
-        directories:
-          - '$HOME/.m2/repository'
-          - '$HOME/.gradle'
-          - ~/.ivy2
-      # before_install:
-        # - cd app8 && chmod +x gradlew
-      script:
-        - cd app9 && ant checkstyle 
-      after_success:
-        # - bash <(curl -s https://codecov.io/bash)
-        - deactivate
-
-#TESTED NOT OK
-    - name: "build gradle w checkstyle on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-      - openjdk8
-      # cache:
-      #   directories:
-      #     - '$HOME/.m2/repository'
-      #     - '$HOME/.gradle'
-      before_install:
-        - cd app8 && chmod +x gradlew
-      script:
-        - "./gradlew clean check --debug --stacktrace" 
-      after_success:
-        # - bash <(curl -s https://codecov.io/bash)
-        - deactivate
+    # - name: "build ant w checkstyle on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required
+    #   addons:
+    #     apt:
+    #       packages:
+    #         - ant
+    #         - xmlstarlet              
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.gradle'
+    #       - ~/.ivy2
+    #   # before_install:
+    #     # - cd app8 && chmod +x gradlew
+    #   script:
+    #     - cd app9 && ant checkstyle 
+    #   after_success:
+    #     # - bash <(curl -s https://codecov.io/bash)
+    #     - deactivate
 
 #TESTED NOT OK
-    - name: "build gradle w jacoco junit codecov  on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-      - openjdk8
-      # cache:
-      #   directories:
-      #     - '$HOME/.m2/repository'
-      #     - '$HOME/.gradle'
-      before_install:
-        # - chmod +x gradlew 
-        - cd app7 && chmod +x gradlew
-      script:
-        # - cd app6 && chmod +x gradlew
-        - "./gradlew check" 
-        - "./gradlew codeCoverageReport"
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-        - deactivate
+    # - name: "build gradle w checkstyle on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   # cache:
+    #   #   directories:
+    #   #     - '$HOME/.m2/repository'
+    #   #     - '$HOME/.gradle'
+    #   before_install:
+    #     - cd app8 && chmod +x gradlew
+    #   script:
+    #     - "./gradlew clean check --debug --stacktrace" 
+    #   after_success:
+    #     # - bash <(curl -s https://codecov.io/bash)
+    #     - deactivate
+
+#TESTED NOT OK
+    # - name: "build gradle w jacoco junit codecov  on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   # cache:
+    #   #   directories:
+    #   #     - '$HOME/.m2/repository'
+    #   #     - '$HOME/.gradle'
+    #   before_install:
+    #     # - chmod +x gradlew 
+    #     - cd app7 && chmod +x gradlew
+    #   script:
+    #     # - cd app6 && chmod +x gradlew
+    #     - "./gradlew check" 
+    #     - "./gradlew codeCoverageReport"
+    #   after_success:
+    #     - bash <(curl -s https://codecov.io/bash)
+    #     - deactivate
 
     # - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"
     #   dist: bionic
@@ -414,100 +301,100 @@ matrix:
     #     - deactivate
 
 # TESTED OK        
-    # - name: "build gradle w jacoco coveralls  on bionic arm64"
-    #   dist: bionic
-    #   arch: amd64 
-    #   sudo: required        
-    #   language: java
-    #   jdk:
-    #   - openjdk8
-    #   cache:
-    #     directories:
-    #       - '$HOME/.m2/repository'
-    #       - '$HOME/.gradle'
-    #   before_install:
-    #     - java -version
-    #     - gradle -v
-    #     # - chmod +x gradlew 
-    #   script:
-    #     - cd app5 && chmod +x gradlew
-    #     - "./gradlew clean build"
-    #   after_success:
-    #     - "./gradlew jacocoTestReport coveralls"
-    #     - deactivate
+    - name: "build gradle w jacoco coveralls  on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.gradle'
+      before_install:
+        - java -version
+        - gradle -v
+        # - chmod +x gradlew 
+      script:
+        - cd app5 && chmod +x gradlew
+        - "./gradlew clean build"
+      after_success:
+        - "./gradlew jacocoTestReport coveralls"
+        - deactivate
 
 # TESTED  OK    
-    # - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
-    #   dist: bionic
-    #   arch: amd64 
-    #   sudo: required        
-    #   language: java
-    #   jdk:
-    #   - openjdk8
-    #   cache:
-    #     directories:
-    #       - '$HOME/.m2/repository'
-    #       - '$HOME/.gradle'
-    #   before_install:
-    #     - java -version
-    #     - gradle -v
-    #     # - chmod +x gradlew
-    #   script:
-    #     - cd app4 && chmod +x gradlew
-    #     - ./gradlew assemble
-    #     - ./gradlew check
-    #   after_success:
-    #     # Upload to CoPilot
-    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-    #     - deactivate
+    - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.gradle'
+      before_install:
+        - java -version
+        - gradle -v
+        # - chmod +x gradlew
+      script:
+        - cd app4 && chmod +x gradlew
+        - ./gradlew assemble
+        - ./gradlew check
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate
 
  # TESTED NOT OK 
-    # - name: "build gradle w findbugs blackduckcopilot  on focal arm64"
-    #   dist: focal
-    #   arch: amd64 
-    #   sudo: required        
-    #   language: java
-    #   jdk:
-    #     - openjdk15
-    #     # - openjdk10 #Could not determine java version from '10.0.2'.
-    #     # - openjdk16 #Could not determine java version from '16-ea'.
-    #     # - openjdk9 #Could not determine java version from '9.0.4'.
-    #   # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
-    #   cache:
-    #   directories:
-    #     - '$HOME/.m2/repository'
-    #     - '$HOME/.gradle'
-    #   before_install:
-    #     # - java -version
-    #     - gradle -v
-    #   script:
-    #     - sudo make deploy-app4
-    #   after_success:
-    #     # Upload to CoPilot
-    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-    #     - deactivate      
+    - name: "build gradle w findbugs blackduckcopilot  on focal arm64"
+      dist: focal
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+        - openjdk15
+        # - openjdk10 #Could not determine java version from '10.0.2'.
+        # - openjdk16 #Could not determine java version from '16-ea'.
+        # - openjdk9 #Could not determine java version from '9.0.4'.
+      # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
+      cache:
+      directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+      before_install:
+        # - java -version
+        - gradle -v
+      script:
+        - sudo make deploy-app4
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate      
 
  # TESTED OK 
-    # - name: "build gradle w make findbugs blackduckcopilot  on bionic arm64"
-    #   dist: bionic
-    #   arch: amd64 
-    #   sudo: required        
-    #   language: java
-    #   jdk:
-    #   - openjdk8
-    #   cache:
-    #   directories:
-    #     - '$HOME/.m2/repository'
-    #     - '$HOME/.gradle'
-    #   before_install:
-    #     - java -version
-    #     - gradle -v
-    #   script:
-    #     - sudo make deploy-app4
-    #   after_success:
-    #     # Upload to CoPilot
-    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-    #     - deactivate      
+    - name: "build gradle w make findbugs blackduckcopilot  on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+      directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+      before_install:
+        - java -version
+        - gradle -v
+      script:
+        - sudo make deploy-app4
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate      
 
     # - name: "deploy codecov gradle on bionic arm64"
     #   dist: bionic
