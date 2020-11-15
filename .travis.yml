@@ -341,7 +341,7 @@ matrix:
       sudo: required        
       language: java
       jdk:
-        - openjdk16
+        - openjdk9
       # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
       cache:
       directories:
