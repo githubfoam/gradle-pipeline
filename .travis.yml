@@ -320,7 +320,8 @@ matrix:
       sudo: required        
       language: java
       jdk:
-      - openjdk8
+        - openjdk16
+      # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
       cache:
       directories:
         - '$HOME/.m2/repository'
