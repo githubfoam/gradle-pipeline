@@ -23,13 +23,13 @@ jobs:
     - name: Change dir
       run: cd app6 && chmod +x gradlew
     - name: Run Checks
-      run: "./gradlew clean check"    
+      run: cd app6 &&  "./gradlew clean check"    
     - name: Buil Application
-      run: "./gradlew clean build"       
+      run: cd app6 && "./gradlew clean build"       
     - name: Upload to CoPilot
       run: "bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)" 
 
-  gradle-findbugs-blackduckcopilot:
+  gradle-make-findbugs-blackduckcopilot:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
