@@ -10,8 +10,8 @@ on:
 jobs:
   build:
 
+  linux-1:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: os fingerprinting
@@ -22,6 +22,36 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: sudo make deploy-app4
+
+  linux-2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: sudo make deploy-app5
+      
+  linux-3:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Change dir
+      run: cd app5 && chmod +x gradlew
+    - name: Build with Gradle
+      run: "./gradlew clean build"    
+    - name: Create jacoco coveralls report
+      run: "./gradlew jacocoTestReport coveralls"             
 
   windows:
     runs-on: windows-latest
