@@ -341,7 +341,9 @@ matrix:
       sudo: required        
       language: java
       jdk:
-        - openjdk9
+        - openjdk10
+        # - openjdk16 #Could not determine java version from '16-ea'.
+        # - openjdk9 #Could not determine java version from '9.0.4'.
       # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
       cache:
       directories:
