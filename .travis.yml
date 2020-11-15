@@ -305,8 +305,8 @@ matrix:
         - gradle -v
         # - chmod +x gradlew
       script:
-        - git add -f gradle/wrapper/gradle-wrapper.jar
-        - git add -f gradle/wrapper/gradle-wrapper.properties
+        # - git add -f gradle/wrapper/gradle-wrapper.jar
+        # - git add -f gradle/wrapper/gradle-wrapper.properties
         - cd app4
         - chmod +x gradlew
         # - gradle wrapper
