@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 
 public class FooTest {
 
-	private HelloWorld subject;
+	private Foo subject;
 
 	@Before
 	public void setup() {
-		subject = new HelloWorld();
+		subject = new Foo();
 	}
 	
 	@Test
