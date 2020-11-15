@@ -12,4 +12,8 @@ public class Foo {
         return a / b;  
     }
 
+    public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
 }
