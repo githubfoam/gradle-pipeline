@@ -251,7 +251,8 @@ matrix:
 
     - name: "deploy blackduckcopilot gradle on bionic arm64"
       dist: bionic
-      arch: amd64         
+      arch: amd64 
+      sudo: false        
       language: java
       jdk:
       - openjdk8
