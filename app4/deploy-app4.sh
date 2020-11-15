@@ -10,7 +10,7 @@ cd app4
 ls -lai
 chmod +x gradlew
 ls -lai
-gradlew assemble
-gradlew check
+./gradlew assemble
+./gradlew check
 
 echo "=============================deploy gradle============================================================="

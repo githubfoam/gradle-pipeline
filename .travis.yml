@@ -308,8 +308,10 @@ matrix:
         - cd app4
         - chmod +x gradlew
         - gradle wrapper
+        - ./gradlew assemble
+        - ./gradlew check
         # - ./gradlew clean
-        - "./gradlew clean build"
+        # - "./gradlew clean build"
       # after_success:
       #   # Upload to CoPilot
       #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
