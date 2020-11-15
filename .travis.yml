@@ -289,7 +289,7 @@ matrix:
     #   script:
     #     - echo "test"
 
-    - name: "build gradle w jacoco coveralls  on bionic arm64"
+    - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"
       dist: bionic
       arch: amd64 
       sudo: required        
@@ -308,79 +308,105 @@ matrix:
         - cd app5 && chmod +x gradlew
         - "./gradlew clean build"
       after_success:
-        - "./gradlew jacocoTestReport coveralls"
-        - deactivate
-
-    - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-      - openjdk8
-      cache:
-        directories:
-          - '$HOME/.m2/repository'
-          - '$HOME/.gradle'
-      before_install:
-        - java -version
-        - gradle -v
-        # - chmod +x gradlew
-      script:
-        - cd app4 && chmod +x gradlew
-        - ./gradlew assemble
-        - ./gradlew check
-      after_success:
         # Upload to CoPilot
         - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
         - deactivate
 
-    - name: "build gradle w findbugs blackduckcopilot  on focal arm64"
-      dist: focal
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-        - openjdk15
-        # - openjdk10 #Could not determine java version from '10.0.2'.
-        # - openjdk16 #Could not determine java version from '16-ea'.
-        # - openjdk9 #Could not determine java version from '9.0.4'.
-      # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
-      cache:
-      directories:
-        - '$HOME/.m2/repository'
-        - '$HOME/.gradle'
-      before_install:
-        # - java -version
-        - gradle -v
-      script:
-        - sudo make deploy-app4
-      after_success:
-        # Upload to CoPilot
-        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-        - deactivate      
+# TESTED OK        
+    # - name: "build gradle w jacoco coveralls  on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.gradle'
+    #   before_install:
+    #     - java -version
+    #     - gradle -v
+    #     # - chmod +x gradlew 
+    #   script:
+    #     - cd app5 && chmod +x gradlew
+    #     - "./gradlew clean build"
+    #   after_success:
+    #     - "./gradlew jacocoTestReport coveralls"
+    #     - deactivate
 
+# TESTED  OK    
+    # - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.gradle'
+    #   before_install:
+    #     - java -version
+    #     - gradle -v
+    #     # - chmod +x gradlew
+    #   script:
+    #     - cd app4 && chmod +x gradlew
+    #     - ./gradlew assemble
+    #     - ./gradlew check
+    #   after_success:
+    #     # Upload to CoPilot
+    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+    #     - deactivate
 
-    - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-      - openjdk8
-      cache:
-      directories:
-        - '$HOME/.m2/repository'
-        - '$HOME/.gradle'
-      before_install:
-        - java -version
-        - gradle -v
-      script:
-        - sudo make deploy-app4
-      after_success:
-        # Upload to CoPilot
-        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-        - deactivate      
+ # TESTED NOT OK 
+    # - name: "build gradle w findbugs blackduckcopilot  on focal arm64"
+    #   dist: focal
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #     - openjdk15
+    #     # - openjdk10 #Could not determine java version from '10.0.2'.
+    #     # - openjdk16 #Could not determine java version from '16-ea'.
+    #     # - openjdk9 #Could not determine java version from '9.0.4'.
+    #   # - openjdk8 #Expected feature release number in range of 9 to 16, but got: 8
+    #   cache:
+    #   directories:
+    #     - '$HOME/.m2/repository'
+    #     - '$HOME/.gradle'
+    #   before_install:
+    #     # - java -version
+    #     - gradle -v
+    #   script:
+    #     - sudo make deploy-app4
+    #   after_success:
+    #     # Upload to CoPilot
+    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+    #     - deactivate      
+
+ # TESTED OK 
+    # - name: "build gradle w make findbugs blackduckcopilot  on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #   directories:
+    #     - '$HOME/.m2/repository'
+    #     - '$HOME/.gradle'
+    #   before_install:
+    #     - java -version
+    #     - gradle -v
+    #   script:
+    #     - sudo make deploy-app4
+    #   after_success:
+    #     # Upload to CoPilot
+    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+    #     - deactivate      
 
     # - name: "deploy codecov gradle on bionic arm64"
     #   dist: bionic
