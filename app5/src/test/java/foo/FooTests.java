@@ -14,3 +14,4 @@ public class FooTests {
 	public void contextLoads() {
 	}
 
+}
