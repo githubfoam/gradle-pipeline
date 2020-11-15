@@ -149,6 +149,8 @@ matrix:
     #   after_success:
     #     - deactivate
 
+# https://sonarcloud.io/account/security
+# https://docs.travis-ci.com/user/sonarcloud/
     - name: "deploy gradle w jacoco junit sonarcloud on bionic arm64"
       dist: bionic
       sudo: false
@@ -158,7 +160,7 @@ matrix:
         sonarcloud:
           organization: "githubfoam"
           token:
-            secure: "ba8141c15692a911c61d56ecea297c0264beaf58"
+            secure: $SONAR_TOKEN
       language: shell
       # language: java
       # jdk:
