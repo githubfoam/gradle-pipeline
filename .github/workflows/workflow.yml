@@ -1,11 +1,11 @@
 name: GradleCI
 
-on:
-  push:
-    branches: [ githubactions ]
-  pull_request:
-    branches: [ githubactions ]
-# on: [push, pull_request]
+# on:
+#   push:
+#     branches: [ githubactions ]
+#   pull_request:
+#     branches: [ githubactions ]
+on: [push, pull_request]
 
 jobs:
   build:
