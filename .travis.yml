@@ -135,6 +135,20 @@ matrix:
       after_success:
         - deactivate
 
+# https://github.com/GoogleContainerTools/jib
+    - name: "build jib gradle plugin on bionic arm64"
+      dist: bionic
+      sudo: false
+      install: true
+      arch: amd64  
+      language: java
+      jdk:
+      - openjdk8
+      before_install:
+        - cd app3 && mvn compile jib:build     
+      after_success:
+        - deactivate
+
   #   # - name: "deploy gradle on bionic arm64"
   #   #   dist: bionic
   #   #   sudo: false
