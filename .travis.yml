@@ -249,43 +249,45 @@ matrix:
     #   after_success:
     #     - deactivate
 
-    - name: "build scala w oracle jdk on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: scala
-      scala:
-        - 2.10.4
-        - 2.11.2
-      jdk:
-      # Expected feature release number in range of 9 to 16, but got: 7
-        # - oraclejdk7
-        # - oraclejdk8
-        - oraclejdk16
-        - oraclejdk9
-      services:
-      - mongodb
-      script:
-        - echo "test"
+# TESTED OK
+    # - name: "build scala w oracle jdk on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: scala
+    #   scala:
+    #     - 2.10.4
+    #     - 2.11.2
+    #   jdk:
+    #   # Expected feature release number in range of 9 to 16, but got: 7
+    #     # - oraclejdk7
+    #     # - oraclejdk8
+    #     - oraclejdk16
+    #     - oraclejdk9
+    #   services:
+    #   - mongodb
+    #   script:
+    #     - echo "test"
 
-    - name: "build scala w oracle/open jdk on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: scala
-      scala:
-      - 2.11.1
-      - 2.10.4
-      - 2.9.3
-      jdk:
-      # Expected feature release number in range of 9 to 16, but got: 
-      - oraclejdk16
-      - oraclejdk7
-      - openjdk6
-      services:
-      - mongodb
-      script:
-        - echo "test"
+# TESTED OK
+    # - name: "build scala w oracle/open jdk on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: scala
+    #   scala:
+    #   - 2.11.1
+    #   - 2.10.4
+    #   - 2.9.3
+    #   jdk:
+    #   # Expected feature release number in range of 9 to 16, but got: 
+    #   - oraclejdk16
+    #   - oraclejdk7
+    #   - openjdk6
+    #   services:
+    #   - mongodb
+    #   script:
+    #     - echo "test"
 
     - name: "deploy blackduckcopilot gradle on bionic arm64"
       dist: bionic
@@ -303,11 +305,11 @@ matrix:
         - gradle -v
         # - chmod +x gradlew
       script:
-        - cd app4
-        - chmod +x gradlew
-        - ./gradlew clean
+        # - cd app4
+        # - chmod +x gradlew
+        # - ./gradlew clean
         # - "./gradlew clean build"
-        # - sudo make deploy-app4
+        - sudo make deploy-app4
       # after_success:
       #   # Upload to CoPilot
       #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)

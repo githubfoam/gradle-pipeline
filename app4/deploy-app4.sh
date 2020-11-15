@@ -7,8 +7,8 @@ set -o xtrace
 
 echo "=============================deploy gradle============================================================="
 
-gradlew clean build
-# gradlew assemble
-# gradlew check
+chmod +x gradlew
+gradlew assemble
+gradlew check
 
 echo "=============================deploy gradle============================================================="
