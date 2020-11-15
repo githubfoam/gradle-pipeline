@@ -300,8 +300,9 @@ matrix:
         - '$HOME/.gradle'
       before_install:
         - java -version
-      script:
         - gradle -v
+        - chmod +x gradlew
+      script:
         - cd app4
         - "./gradlew clean build"
         # - sudo make deploy-app4
