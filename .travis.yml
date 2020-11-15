@@ -289,7 +289,7 @@ matrix:
     #   script:
     #     - echo "test"
 
-    - name: "deploy blackduckcopilot gradle on bionic arm64"
+    - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
       dist: bionic
       arch: amd64 
       sudo: required        
@@ -305,8 +305,6 @@ matrix:
         - gradle -v
         # - chmod +x gradlew
       script:
-        # - git add -f gradle/wrapper/gradle-wrapper.jar
-        # - git add -f gradle/wrapper/gradle-wrapper.properties
         - cd app4
         - chmod +x gradlew
         - ./gradlew assemble
@@ -316,7 +314,29 @@ matrix:
         - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
         - deactivate
 
-    - name: "deploy blackduckcopilot gradle on bionic arm64"
+    - name: "build gradle w findbugs blackduckcopilot  on focal arm64"
+      dist: focal
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+      directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+      before_install:
+        - java -version
+        - gradle -v
+      script:
+        - sudo make deploy-app4
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate      
+
+
+    - name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
       dist: bionic
       arch: amd64 
       sudo: required        

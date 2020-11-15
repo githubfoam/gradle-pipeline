@@ -1,6 +1,6 @@
 # gradle-pipeline
 
-github actions :  
+github actions lin/win/macos :  
 [![GradleCI](https://github.com/githubfoam/gradle-pipeline/workflows/GradleCI/badge.svg)](https://github.com/githubfoam/gradle-pipeline/actions?query=workflow%3A%22GradleCI%22+branch%3Agithubactions)   
 
 travis-ci:  
