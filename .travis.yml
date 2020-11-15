@@ -289,6 +289,27 @@ matrix:
     #   script:
     #     - echo "test"
 
+    - name: "build gradle w checkstyle on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      # cache:
+      #   directories:
+      #     - '$HOME/.m2/repository'
+      #     - '$HOME/.gradle'
+      before_install:
+        # - chmod +x gradlew 
+        - cd app8 && chmod +x gradlew
+      script:
+        - "./gradlew check" 
+      after_success:
+        # - bash <(curl -s https://codecov.io/bash)
+        - deactivate
+
+#TESTED NOT OK
     - name: "build gradle w jacoco junit codecov  on bionic arm64"
       dist: bionic
       arch: amd64 
