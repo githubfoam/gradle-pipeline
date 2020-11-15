@@ -256,6 +256,10 @@ matrix:
       language: java
       jdk:
       - openjdk8
+      cache:
+      directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
       before_install:
         - java -version
       script:
