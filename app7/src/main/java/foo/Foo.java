@@ -3,7 +3,7 @@ package foo;
 /**
  * Foo class
  */
-public class HelloWorld {
+public class Foo {
 	
 	public String getMessage(boolean bigger) {
 		if (bigger) {
