@@ -302,7 +302,7 @@ matrix:
       #     - '$HOME/.gradle'
       before_install:
         # - chmod +x gradlew 
-        - cd app6 && chmod +x gradlew
+        - cd app7 && chmod +x gradlew
       script:
         # - cd app6 && chmod +x gradlew
         - "./gradlew check" 
@@ -311,29 +311,29 @@ matrix:
         - bash <(curl -s https://codecov.io/bash)
         - deactivate
 
-    - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"
-      dist: bionic
-      arch: amd64 
-      sudo: required        
-      language: java
-      jdk:
-      - openjdk8
-      cache:
-        directories:
-          - '$HOME/.m2/repository'
-          - '$HOME/.gradle'
-      before_install:
-        - java -version
-        - gradle -v
-        # - chmod +x gradlew 
-      script:
-        - cd app6 && chmod +x gradlew
-        - "./gradlew clean check" #Run Checks
-        - "./gradlew clean build" #Buil Application
-      after_success:
-        # Upload to CoPilot
-        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-        - deactivate
+    # - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"
+    #   dist: bionic
+    #   arch: amd64 
+    #   sudo: required        
+    #   language: java
+    #   jdk:
+    #   - openjdk8
+    #   cache:
+    #     directories:
+    #       - '$HOME/.m2/repository'
+    #       - '$HOME/.gradle'
+    #   before_install:
+    #     - java -version
+    #     - gradle -v
+    #     # - chmod +x gradlew 
+    #   script:
+    #     - cd app6 && chmod +x gradlew
+    #     - "./gradlew clean check" #Run Checks
+    #     - "./gradlew clean build" #Buil Application
+    #   after_success:
+    #     # Upload to CoPilot
+    #     - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+    #     - deactivate
 
 # TESTED OK        
     # - name: "build gradle w jacoco coveralls  on bionic arm64"
