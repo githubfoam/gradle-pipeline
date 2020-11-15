@@ -259,7 +259,8 @@ matrix:
         - java -version
       script:
         - cd app4
-        # - ./gradlew check
+        - ./gradlew assemble
+        - ./gradlew check
       # after_success:
       #   # Upload to CoPilot
       #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
