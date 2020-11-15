@@ -6,10 +6,10 @@ set -o xtrace
 # set -eox pipefail #safety for script
 
 echo "=============================deploy gradle============================================================="
+
 cd app4
-ls -lai
 chmod +x gradlew
-ls -lai
+
 ./gradlew assemble
 ./gradlew check
 

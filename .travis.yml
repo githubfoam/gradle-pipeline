@@ -309,15 +309,12 @@ matrix:
         # - git add -f gradle/wrapper/gradle-wrapper.properties
         - cd app4
         - chmod +x gradlew
-        # - gradle wrapper
         - ./gradlew assemble
         - ./gradlew check
-        # - ./gradlew clean
-        # - "./gradlew clean build"
-      # after_success:
-      #   # Upload to CoPilot
-      #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-      #   - deactivate
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate
 
     - name: "deploy blackduckcopilot gradle on bionic arm64"
       dist: bionic
@@ -335,10 +332,10 @@ matrix:
         - gradle -v
       script:
         - sudo make deploy-app4
-      # after_success:
-      #   # Upload to CoPilot
-      #   - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
-      #   - deactivate      
+      after_success:
+        # Upload to CoPilot
+        - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
+        - deactivate      
 
     # - name: "deploy codecov gradle on bionic arm64"
     #   dist: bionic
