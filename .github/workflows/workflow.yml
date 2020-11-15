@@ -8,7 +8,7 @@ name: GradleCI
 on: [push, pull_request]
 
 jobs:
-  build:
+  # build:
 
   linux-1:
     runs-on: ubuntu-latest

@@ -9,6 +9,9 @@ travis-ci:
 blackduckCoPilot:  
 [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/githubfoam/gradle-pipeline/branches/githubactions/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/githubfoam/gradle-pipeline/branches/githubactions)  
 
+coveralls:  
+[![Coverage Status](https://coveralls.io/repos/github/githubfoam/gradle-pipeline/badge.svg?branch=githubactions)](https://coveralls.io/github/githubfoam/gradle-pipeline?branch=githubactions)
+
 ~~~~
 https://sdkman.io/install
 https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Linux.html
