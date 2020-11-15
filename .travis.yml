@@ -289,6 +289,28 @@ matrix:
     #   script:
     #     - echo "test"
 
+    - name: "build gradle w jacoco junit codecov  on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: java
+      jdk:
+      - openjdk8
+      # cache:
+      #   directories:
+      #     - '$HOME/.m2/repository'
+      #     - '$HOME/.gradle'
+      before_install:
+        # - chmod +x gradlew 
+        - cd app6 && chmod +x gradlew
+      script:
+        # - cd app6 && chmod +x gradlew
+        - "./gradlew check" 
+        - "./gradlew codeCoverageReport"
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+        - deactivate
+
     - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"
       dist: bionic
       arch: amd64 
@@ -307,7 +329,7 @@ matrix:
       script:
         - cd app6 && chmod +x gradlew
         - "./gradlew clean check" #Run Checks
-        - "/gradlew clean build" #Buil Application
+        - "./gradlew clean build" #Buil Application
       after_success:
         # Upload to CoPilot
         - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
