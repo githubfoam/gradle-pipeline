@@ -307,7 +307,8 @@ matrix:
       script:
         - cd app4
         - chmod +x gradlew
-        - ./gradlew clean
+        - gradle wrapper
+        # - ./gradlew clean
         - "./gradlew clean build"
       # after_success:
       #   # Upload to CoPilot
