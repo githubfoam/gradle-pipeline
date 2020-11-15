@@ -289,6 +289,65 @@ matrix:
     #   script:
     #     - echo "test"
 
+
+    - name: "build maven w checkstyle on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required
+      addons:
+        apt:
+          packages:
+            # - ant
+            - xmlstarlet              
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.gradle'
+          - '$HOME/.ivy2'
+          # - ~/.ivy2
+      # before_install:
+        # - cd app8 && chmod +x gradlew
+      script:
+        - cd app10 
+        - MVN_SETTINGS=${TRAVIS_HOME}/.m2/settings.xml
+        - xmlstarlet ed --inplace -d "//mirrors" $MVN_SETTINGS
+        - mvn checkstyle:checkstyle -Pgithub-maven-repo
+        - mvn -f pom-google-custom-suppression.xml clean checkstyle:checkstyle -Pgithub-maven-repo
+        - grep "error" target/checkstyle-result.xml
+        - mvn -f pom-google.xml clean checkstyle:checkstyle -Pgithub-maven-repo
+      after_success:
+        # - bash <(curl -s https://codecov.io/bash)
+        - deactivate
+
+    - name: "build ant w checkstyle on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required
+      addons:
+        apt:
+          packages:
+            - ant
+            - xmlstarlet              
+      language: java
+      jdk:
+      - openjdk8
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.gradle'
+          - ~/.ivy2
+      # before_install:
+        # - cd app8 && chmod +x gradlew
+      script:
+        - cd app9 && ant checkstyle 
+      after_success:
+        # - bash <(curl -s https://codecov.io/bash)
+        - deactivate
+
+#TESTED NOT OK
     - name: "build gradle w checkstyle on bionic arm64"
       dist: bionic
       arch: amd64 
@@ -303,7 +362,7 @@ matrix:
       before_install:
         - cd app8 && chmod +x gradlew
       script:
-        - "./gradlew check" 
+        - "./gradlew clean check --debug --stacktrace" 
       after_success:
         # - bash <(curl -s https://codecov.io/bash)
         - deactivate
