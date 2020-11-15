@@ -301,7 +301,6 @@ matrix:
       #     - '$HOME/.m2/repository'
       #     - '$HOME/.gradle'
       before_install:
-        # - chmod +x gradlew 
         - cd app8 && chmod +x gradlew
       script:
         - "./gradlew check" 
