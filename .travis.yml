@@ -249,6 +249,39 @@ matrix:
     #   after_success:
     #     - deactivate
 
+    - name: "build scala w oracle jdk on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: scala
+      scala:
+        - 2.10.4
+        - 2.11.2
+      jdk:
+        - oraclejdk7
+        - oraclejdk8'
+      services:
+      - mongodb
+      script:
+        - echo "test"
+
+    - name: "build scala w oracle/open jdk on bionic arm64"
+      dist: bionic
+      arch: amd64 
+      sudo: required        
+      language: scala
+      scala:
+      - 2.11.1
+      - 2.10.4
+      - 2.9.3
+      jdk:
+      - oraclejdk7
+      - openjdk6
+      services:
+      - mongodb
+      script:
+        - echo "test"
+
     - name: "deploy blackduckcopilot gradle on bionic arm64"
       dist: bionic
       arch: amd64 
