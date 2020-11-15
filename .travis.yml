@@ -305,8 +305,9 @@ matrix:
         - gradle -v
         # - chmod +x gradlew 
       script:
-        - cd app5 && chmod +x gradlew
-        - "./gradlew clean build"
+        - cd app6 && chmod +x gradlew
+        - "./gradlew clean check" #Run Checks
+        - "/gradlew clean build" #Buil Application
       after_success:
         # Upload to CoPilot
         - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
