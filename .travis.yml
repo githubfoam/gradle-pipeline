@@ -149,35 +149,32 @@ matrix:
     #   after_success:
     #     - deactivate
 
-    # - name: "deploy gradle on bionic arm64"
-    #   dist: bionic
-    #   sudo: false
-    #   install: true
-    #   arch: amd64  
-    #   addons:
-    #     sonarcloud:
-    #       organization: "sonarcloud"
-    #       token:
-    #         secure: "RfH/EbIMdlyILuURtxvvKQ5HYF+GgHWp8RWeBPs17XFcRpIroAlx4/UJzzcOMfvGfk6ce1lrWT1WQyhW5g7fRL0SGKmq2hsDG3q00gfyTciVyGnF6XKNy4VhWA+EAuN6qU7U/dcWf8ttSlO2fxAQNifpn6PhAmjF3CLLUHkCfEbz01HOoaA/BtFJReWtfmLDWLcGgEz3lzWtiobujYwE86Fz6Ch2JjYIjqFkPyffUaCOXWjPkSOTOO4o+TspX9GlgT9aj8WR0xfECvpnKr6s3Gx/zX/dbulV3R2JfUSHelByi72V4e69PzCx0per4wSc6eZyUaVYo2RSaGC38eypXQwN7MZOX26HV+STTeaVNMHXveoOuFHvlop/aXKkxcDv4MGaIq7WwniJoAWwziBweZTnVtJbn+FvEBLCfpuSxMYAW3SKR63PN56oMisSdZEyjnsRXgasj15sUgHVBpEqVGQNXs39Xqi3TpRxoCeZaWKraZC1ZqcGL0OYxVD4l+YmNabXIMG9+JdtyWRjtytDZXMRa4Uxq/NPVR9gtOBbiGbliiedC5uFhR8gI2PqWNEVxlp60C1Daryi4nmW6c797z+VLSu3p7a3QFKDfUDDYxvMoN8DTl4A1x6BWopFUHFiGu/qXvfSy9uBUgt0McQW7YO9lLlUHzFDMJWbP0D+3Cs="
-    #   language: shell
-    #   # language: java
-    #   # jdk:
-    #   # - openjdk8
-    #   # before_install:
-    #   #   - java -version
-    #   script:
-    #     - ./gradlew sonarqube
-    #   #   - ./gradlew assemble
-    #   #   - ./gradlew check
-    #   #   - ./gradlew build #Build with Gradle
-    #   cache:
-    #     directories:
-    #       - '$HOME/.m2/repository'
-    #       - '$HOME/.sonar/cache'
-    #       - '$HOME/.gradle'
-    #       - '.gradle'      
-    #   after_success:
-    #     - deactivate
+    - name: "deploy gradle w jacoco junit sonarcloud on bionic arm64"
+      dist: bionic
+      sudo: false
+      install: true
+      arch: amd64  
+      addons:
+        sonarcloud:
+          organization: "sonarcloud"
+          token:
+            secure: "RfH/EbIMdlyILuURtxvvKQ5HYF+GgHWp8RWeBPs17XFcRpIroAlx4/UJzzcOMfvGfk6ce1lrWT1WQyhW5g7fRL0SGKmq2hsDG3q00gfyTciVyGnF6XKNy4VhWA+EAuN6qU7U/dcWf8ttSlO2fxAQNifpn6PhAmjF3CLLUHkCfEbz01HOoaA/BtFJReWtfmLDWLcGgEz3lzWtiobujYwE86Fz6Ch2JjYIjqFkPyffUaCOXWjPkSOTOO4o+TspX9GlgT9aj8WR0xfECvpnKr6s3Gx/zX/dbulV3R2JfUSHelByi72V4e69PzCx0per4wSc6eZyUaVYo2RSaGC38eypXQwN7MZOX26HV+STTeaVNMHXveoOuFHvlop/aXKkxcDv4MGaIq7WwniJoAWwziBweZTnVtJbn+FvEBLCfpuSxMYAW3SKR63PN56oMisSdZEyjnsRXgasj15sUgHVBpEqVGQNXs39Xqi3TpRxoCeZaWKraZC1ZqcGL0OYxVD4l+YmNabXIMG9+JdtyWRjtytDZXMRa4Uxq/NPVR9gtOBbiGbliiedC5uFhR8gI2PqWNEVxlp60C1Daryi4nmW6c797z+VLSu3p7a3QFKDfUDDYxvMoN8DTl4A1x6BWopFUHFiGu/qXvfSy9uBUgt0McQW7YO9lLlUHzFDMJWbP0D+3Cs="
+      language: shell
+      # language: java
+      # jdk:
+      # - openjdk8
+      before_install:
+        - cd app11 && chmod +x gradlew
+      script:
+        - ./gradlew sonarqube
+      cache:
+        directories:
+          - '$HOME/.m2/repository'
+          - '$HOME/.sonar/cache'
+          - '$HOME/.gradle'
+          - '.gradle'      
+      after_success:
+        - deactivate
 
 # https://docs.gradle.org/nightly/userguide/travis-ci.html        
     # - name: "Executing Gradle builds on Travis CI on bionic arm64"
