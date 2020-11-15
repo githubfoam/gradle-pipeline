@@ -301,10 +301,12 @@ matrix:
       before_install:
         - java -version
         - gradle -v
-        - chmod +x gradlew
+        # - chmod +x gradlew
       script:
         - cd app4
-        - "./gradlew clean build"
+        - chmod +x gradlew
+        - ./gradlew clean
+        # - "./gradlew clean build"
         # - sudo make deploy-app4
       # after_success:
       #   # Upload to CoPilot
