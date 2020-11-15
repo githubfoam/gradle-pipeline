@@ -260,7 +260,7 @@ matrix:
         - java -version
       script:
         - cd app4
-        - ./gradlew assemble
+        - sudo ./gradlew assemble
         - ./gradlew check
       # after_success:
       #   # Upload to CoPilot
