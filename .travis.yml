@@ -350,7 +350,7 @@ matrix:
         - '$HOME/.m2/repository'
         - '$HOME/.gradle'
       before_install:
-        - java -version
+        # - java -version
         - gradle -v
       script:
         - sudo make deploy-app4

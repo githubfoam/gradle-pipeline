@@ -3,17 +3,13 @@ package foo;
 /**
  * Foo class
  */
-public class Foo {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-    public static int div(int a, int b) throws Exception {
-    	if (b == 0) {
-    		throw new UnsupportedOperationException("Can't divide by zero!");
-    	}
-        return a / b;  
-    }
+@SpringBootApplication
+public class Application {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
 }
