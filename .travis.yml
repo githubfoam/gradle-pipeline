@@ -8,7 +8,37 @@ matrix:
   fast_finish: true
   include:  
 
+    - name: "appium w homebrew on macOS 10.15.7 osx xcode12.2"
+      sudo: required
+      os: osx
+      arch: i386 
+      osx_image:
+        - xcode12.2 #macOS 10.15.7
+      addons:
+        homebrew:
+          packages:
+          - node
+          - python
+          - git
+          - tar
+          update: true
+      language: c
+      env:
+        global:
+          - LUAROCKS=2.2.2
+        matrix:
+        - LUA=lua5.1
+        - LUA=lua5.2
+        - LUA=lua5.3
+      # before_install:
+      #   - pip3 install virtualenv
+      # script:
+      # - npm install -g appium
+      after_success:
+        - deactivate
+
     - name: "build lua w codecov on bionic arm64"
+      osx: linux
       dist: bionic
       sudo: required
       install: true
@@ -25,26 +55,10 @@ matrix:
         - sudo make deploy-lua-app    
       after_success:
         - deactivate
-
-    - name: "build lua w codecov on bionic  i386"
-      dist: osx
-      sudo: required
-      install: true
-      arch:  i386  
-      language: c
-      env:
-        global:
-          - LUAROCKS=2.2.2
-        matrix:
-        - LUA=lua5.1
-        - LUA=lua5.2
-        - LUA=lua5.3
-      script:
-        - sudo make deploy-lua-app    
-      after_success:
-        - deactivate        
+    
 
     - name: "build lua w codecov on bionic arm64"
+      osx: linux
       dist: bionic
       sudo: required
       install: true
