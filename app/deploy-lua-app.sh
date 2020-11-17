@@ -8,6 +8,9 @@ set -o xtrace
 
 echo "=============================platform============================================================="
 
+echo $LUAROCKS
+echo $LUA
+
 export PATH=${PATH}:$HOME/.lua:$HOME/.local/bin:${TRAVIS_BUILD_DIR}/install/luarocks/bin
 
 LUAJIT_BASE="LuaJIT-2.0.4"
@@ -102,4 +105,47 @@ else
   ln -s $LUA_HOME_DIR/bin/luac $HOME/.lua/luac;
 
 fi
+
+cd $TRAVIS_BUILD_DIR
+
+lua -v
+
+LUAROCKS_BASE=luarocks-$LUAROCKS
+
+curl --location http://luarocks.org/releases/$LUAROCKS_BASE.tar.gz | tar xz
+
+cd $LUAROCKS_BASE
+
+if [ "$LUA" == "luajit" ]; then
+  ./configure --lua-suffix=jit --with-lua-include="$LUA_HOME_DIR/include/luajit-2.0" --prefix="$LR_HOME_DIR";
+elif [ "$LUA" == "luajit2.0" ]; then
+  ./configure --lua-suffix=jit --with-lua-include="$LUA_HOME_DIR/include/luajit-2.0" --prefix="$LR_HOME_DIR";
+elif [ "$LUA" == "luajit2.1" ]; then
+  ./configure --lua-suffix=jit --with-lua-include="$LUA_HOME_DIR/include/luajit-2.1" --prefix="$LR_HOME_DIR";
+else
+  ./configure --with-lua="$LUA_HOME_DIR" --prefix="$LR_HOME_DIR"
+fi
+
+make build && make install
+
+ln -s $LR_HOME_DIR/bin/luarocks $HOME/.lua/luarocks
+
+cd $TRAVIS_BUILD_DIR
+
+luarocks --version
+
+rm -rf $LUAROCKS_BASE
+
+if [ "$LUAJIT" == "yes" ]; then
+  rm -rf $LUAJIT_BASE;
+elif [ "$LUA" == "lua5.1" ]; then
+  rm -rf lua-5.1.5;
+elif [ "$LUA" == "lua5.2" ]; then
+  rm -rf lua-5.2.4;
+elif [ "$LUA" == "lua5.3" ]; then
+  rm -rf lua-5.3.1;
+fi
+
+eval `$HOME/.lua/luarocks path`
+
 echo "=============================deploy lua app============================================================="

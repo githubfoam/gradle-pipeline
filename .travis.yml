@@ -30,11 +30,14 @@ matrix:
         - LUA=lua5.1
         - LUA=lua5.2
         - LUA=lua5.3
-      # before_install:
-      #   - pip3 install virtualenv
+      before_install:
+        - make deploy-lua-app 
+        - luarocks install luacov
+        - luarocks install tapered  
       script:
-      - make deploy-lua-app 
+        - lua -lluacov awesome-tests.lua      
       after_success:
+        - bash <(curl -s https://codecov.io/bash)
         - deactivate
 
     - name: "build lua w codecov on bionic arm64"
@@ -46,14 +49,19 @@ matrix:
       language: c
       env:
         global:
-          - LUAROCKS=2.2.2
+        - LUAROCKS=2.2.2
         matrix:
         - LUA=lua5.1
         - LUA=lua5.2
         - LUA=lua5.3
+      before_install:
+        - make deploy-lua-app 
+        - luarocks install luacov
+        - luarocks install tapered  
       script:
-        - sudo make deploy-lua-app    
+        - lua -lluacov awesome-tests.lua    
       after_success:
+        - bash <(curl -s https://codecov.io/bash)        
         - deactivate
     
 
