@@ -11,7 +11,39 @@ matrix:
     - name: "build lua on macOS 10.15.7 osx xcode12.2"
       sudo: required
       os: osx
-      arch: i386 
+      # arch: i386 
+      osx_image:
+        - xcode12.2 #macOS 10.15.7
+      addons:
+        homebrew:
+          packages:
+          - node
+          - python
+          - git
+          - tar
+          update: true
+      language: c
+      env:
+        global:
+          - LUAROCKS=2.2.2
+        matrix:
+        - LUA=lua5.1
+        - LUA=lua5.2
+        - LUA=lua5.3
+      before_install:
+        - source app/setenv_lua.sh 
+        - luarocks install luacov
+        - luarocks install tapered  
+      script:
+        - lua -lluacov app/awesome-tests.lua      
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+        - deactivate
+
+    - name: "build lua on macOS 10.15.7 osx xcode12.2"
+      sudo: required
+      os: osx
+      # arch: i386 
       osx_image:
         - xcode12.2 #macOS 10.15.7
       addons:
@@ -35,7 +67,7 @@ matrix:
         - luarocks install luacov
         - luarocks install tapered  
       script:
-        - lua -lluacov awesome-tests.lua      
+        - lua -lluacov app/awesome-tests.lua      
       after_success:
         - bash <(curl -s https://codecov.io/bash)
         - deactivate
@@ -43,7 +75,7 @@ matrix:
     - name: "build lua w codecov on bionic arm64"
       osx: linux
       dist: bionic
-      sudo: required
+      sudo: false
       install: true
       arch: amd64  
       language: c
@@ -55,15 +87,38 @@ matrix:
       #   - LUA=lua5.2
       #   - LUA=lua5.3
       before_install:
-        - sudo make deploy-lua-app 
+        - make deploy-lua-app 
         - luarocks install luacov
         - luarocks install tapered  
       script:
-        - lua -lluacov awesome-tests.lua    
+        - lua -lluacov app/awesome-tests.lua    
       after_success:
         - bash <(curl -s https://codecov.io/bash)        
         - deactivate
     
+    - name: "build lua w codecov on bionic arm64"
+      osx: linux
+      dist: bionic
+      sudo: false
+      install: true
+      arch: amd64  
+      language: c
+      env:
+        global:
+        - LUAROCKS=2.2.2
+        matrix:
+        - LUA=lua5.1
+        - LUA=lua5.2
+        - LUA=lua5.3
+      before_install:
+        - source app/setenv_lua.sh 
+        - luarocks install luacov
+        - luarocks install tapered  
+      script:
+        - lua -lluacov app/awesome-tests.lua    
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)        
+        - deactivate
 
   
     # - name: "without committing wrapper files gradle on bionic arm64"
