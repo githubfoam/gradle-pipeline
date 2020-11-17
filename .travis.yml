@@ -57,25 +57,7 @@ matrix:
         - deactivate
     
 
-    - name: "build lua w codecov on bionic arm64"
-      osx: linux
-      dist: bionic
-      sudo: required
-      install: true
-      arch: amd64  
-      language: c
-      env:
-        global:
-          - LUAROCKS=2.2.2
-        matrix:
-        - LUA=lua5.1
-        - LUA=lua5.2
-        - LUA=lua5.3
-      script:
-        - sudo c   
-      after_success:
-        - deactivate
-
+  
     # - name: "without committing wrapper files gradle on bionic arm64"
     #   dist: bionic
     #   sudo: false
