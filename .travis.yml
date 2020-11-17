@@ -21,7 +21,7 @@ matrix:
         - LUA=lua5.1
         - LUA=lua5.2
         - LUA=lua5.3
-      before_install:
+      script:
         - sudo make deploy-lua-app    
       after_success:
         - deactivate
