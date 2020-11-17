@@ -26,6 +26,24 @@ matrix:
       after_success:
         - deactivate
 
+    - name: "build lua w codecov on bionic  i386"
+      dist: bionic
+      sudo: required
+      install: true
+      arch:  i386  
+      language: c
+      env:
+        global:
+          - LUAROCKS=2.2.2
+        matrix:
+        - LUA=lua5.1
+        - LUA=lua5.2
+        - LUA=lua5.3
+      script:
+        - sudo make deploy-lua-app    
+      after_success:
+        - deactivate        
+
     # - name: "without committing wrapper files gradle on bionic arm64"
     #   dist: bionic
     #   sudo: false
