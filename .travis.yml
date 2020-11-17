@@ -31,7 +31,7 @@ matrix:
         - LUA=lua5.2
         - LUA=lua5.3
       before_install:
-        - make deploy-lua-app 
+        - sudo make deploy-lua-app 
         - luarocks install luacov
         - luarocks install tapered  
       script:
@@ -55,7 +55,7 @@ matrix:
         - LUA=lua5.2
         - LUA=lua5.3
       before_install:
-        - make deploy-lua-app 
+        - sudo make deploy-lua-app 
         - luarocks install luacov
         - luarocks install tapered  
       script:
