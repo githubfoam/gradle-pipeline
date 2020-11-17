@@ -23,13 +23,13 @@ matrix:
           - tar
           update: true
       language: c
-      env:
-        global:
-          - LUAROCKS=2.2.2
-        matrix:
-        - LUA=lua5.1
-        - LUA=lua5.2
-        - LUA=lua5.3
+      # env:
+      #   global:
+      #     - LUAROCKS=2.2.2
+      #   matrix:
+      #   - LUA=lua5.1
+      #   - LUA=lua5.2
+      #   - LUA=lua5.3
       before_install:
         - sudo make deploy-lua-app 
         - luarocks install luacov
@@ -47,13 +47,13 @@ matrix:
       install: true
       arch: amd64  
       language: c
-      env:
-        global:
-        - LUAROCKS=2.2.2
-        matrix:
-        - LUA=lua5.1
-        - LUA=lua5.2
-        - LUA=lua5.3
+      # env:
+      #   global:
+      #   - LUAROCKS=2.2.2
+      #   matrix:
+      #   - LUA=lua5.1
+      #   - LUA=lua5.2
+      #   - LUA=lua5.3
       before_install:
         - sudo make deploy-lua-app 
         - luarocks install luacov

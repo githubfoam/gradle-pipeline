@@ -8,7 +8,10 @@ set -o xtrace
 
 echo "=============================platform============================================================="
 
+LUAROCKS="2.2.2"
 echo $LUAROCKS
+
+LUA="lua5.1"
 echo $LUA
 
 export PATH=${PATH}:$HOME/.lua:$HOME/.local/bin:${TRAVIS_BUILD_DIR}/install/luarocks/bin
