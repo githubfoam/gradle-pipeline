@@ -102,19 +102,3 @@ jobs:
       run: "./gradlew clean build"    
     - name: Create jacoco coveralls report
       run: "./gradlew jacocoTestReport coveralls"             
-
-  windows:
-    runs-on: windows-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-  macos:
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!

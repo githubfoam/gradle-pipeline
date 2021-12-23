@@ -7,7 +7,7 @@ set -o xtrace
 
 echo "=============================deploy gradle w jacoco coveralls============================================================="
 
-cd app5
+cd app6
 chmod +x gradlew
 
 ./gradlew assemble
