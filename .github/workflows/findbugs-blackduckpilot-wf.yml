@@ -1,0 +1,22 @@
+name: "findbugs blackduckcopilot Gradle CI"
+
+on:
+  push:
+    branches: [ main ]
+
+
+
+jobs:
+
+  gradle-make-findbugs-blackduckcopilot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: sudo make deploy-app4
