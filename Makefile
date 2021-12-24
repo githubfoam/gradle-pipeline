@@ -1,16 +1,12 @@
 IMAGE := alpine/fio
-APP:="scripts/usernetes-containerd.sh"
+APP:="app/deploy-openesb.sh"
 
-deploy-cakephp:
-	bash scripts/deploy-cakephp.sh
+deploy-app5:
+	bash app5/deploy-app5.sh
 
-provision-bash-jenkins-ubuntu:
-	bash scripts/provision-bash-jenkins-ubuntu.sh
+deploy-app4:
+	bash app4/deploy-app4.sh
 
-deploy-lua-app:
-	bash app/deploy-lua-app.sh
-	
 push-image:
 	docker push $(IMAGE)
-
-.PHONY: deploy-libvirt deploy-vagrant deploy-packer deploy-terraform push-image
+.PHONY: deploy-openesb deploy-dashboard push-image
