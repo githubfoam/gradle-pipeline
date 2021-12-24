@@ -1,0 +1,37 @@
+name: "jacoco junit codecov Gradle CI"
+
+on:
+  push:
+    branches: [ githubactions ]
+  # schedule:
+  #     - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month  
+
+
+
+jobs:
+  # build:
+
+  gradle-jacoco-junit-codecov:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: "build gradle w jacoco junit codecov  on bionic arm64"        
+      run: |
+            cd app7 && chmod +x gradlew
+            ./gradlew check
+            ./gradlew codeCoverageReport
+            bash <(curl -s https://codecov.io/bash)          
+    # - name: Change dir
+    #   run: cd app7 && chmod +x gradlew
+    # - name: Run Checks
+    #   run: "cd app7 &&  ./gradlew check"    
+    # - name: Create codecov coverage report
+    #   run: "cd app6 && ./gradlew codeCoverageReport"       
+    # - name: Upload to codecov
+    #   run: "bash <(curl -s https://codecov.io/bash)"

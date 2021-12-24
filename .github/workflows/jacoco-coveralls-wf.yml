@@ -1,0 +1,43 @@
+name: "jacoco coveralls Gradle CI"
+
+# on:
+#   push:
+#     branches: [ githubactions ]
+#   pull_request:
+#     branches: [ githubactions ]
+on: [push, pull_request]
+
+jobs:
+  # build:
+
+
+
+  gradle-make-jacoco-coveralls:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Gradle
+      run: sudo make deploy-app5
+      
+  gradle-jacoco-coveralls:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: os fingerprinting
+      run: hostnamectl status    
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Change dir
+      run: cd app5 && chmod +x gradlew
+    - name: Build with Gradle
+      run: "./gradlew clean build"    
+    - name: Create jacoco coveralls report
+      run: "./gradlew jacocoTestReport coveralls"             
