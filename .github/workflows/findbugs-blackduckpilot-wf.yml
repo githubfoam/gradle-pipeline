@@ -20,5 +20,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build with Gradle
+    - name: "Build with Gradle"
       run: sudo make deploy-app4
+    - name: "upload blackduckcopilot"
+      run: bash <(curl -s https://copilot.blackducksoftware.com/ci/circle2/scripts/upload)                  
