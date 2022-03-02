@@ -32,6 +32,8 @@ jobs:
             ./gradlew clean build
             # curl: (22) The requested URL returned error: 500 
             # bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)          
+    - name: "upload blackduckcopilot"
+      run: bash <(curl -s https://copilot.blackducksoftware.com/ci/circle2/scripts/upload)            
     # - name: Change dir
     #   run: cd app6 && chmod +x gradlew
     # - name: Run Checks
