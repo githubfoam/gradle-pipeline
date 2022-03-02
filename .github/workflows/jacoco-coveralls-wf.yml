@@ -35,9 +35,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Change dir
-      run: cd app5 && chmod +x gradlew
-    - name: Build with Gradle
-      run: "./gradlew clean build"    
-    - name: Create jacoco coveralls report
-      run: "./gradlew jacocoTestReport coveralls"             
+    - name: "Build with Gradle"
+      run: |
+        cd app5 && chmod +x gradlew
+        ./gradlew clean build
+        ./gradlew jacocoTestReport coveralls"             
