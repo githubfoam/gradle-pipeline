@@ -23,10 +23,12 @@ jobs:
         java-version: 1.8
     - name: "build gradle w checkstyle pmd findbugs blackduckcopilot  on bionic arm64"      
       run: |
+            pwd
+            ls -lai
             cd app6 && chmod +x gradlew
-            ./gradlew clean check
-            ./gradlew clean build
-            bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)          
+            # ./gradlew clean check
+            # ./gradlew clean build
+            # bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)          
     # - name: Change dir
     #   run: cd app6 && chmod +x gradlew
     # - name: Run Checks
