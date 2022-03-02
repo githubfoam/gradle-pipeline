@@ -55,7 +55,7 @@ dependencies {
 	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.2.1'
 }
 
-task wrapper(type: Wrapper) {
+//task wrapper(type: Wrapper) {
     // gradleVersion = '3.2'
-	gradleVersion = '5.1.1'
-}
+//	gradleVersion = '5.1.1'
+//}
