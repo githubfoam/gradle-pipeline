@@ -26,12 +26,6 @@ jobs:
             cd app7 && chmod +x gradlew
             ./gradlew check
             ./gradlew codeCoverageReport
-            bash <(curl -s https://codecov.io/bash)          
-    # - name: Change dir
-    #   run: cd app7 && chmod +x gradlew
-    # - name: Run Checks
-    #   run: "cd app7 &&  ./gradlew check"    
-    # - name: Create codecov coverage report
-    #   run: "cd app6 && ./gradlew codeCoverageReport"       
-    # - name: Upload to codecov
-    #   run: "bash <(curl -s https://codecov.io/bash)"
+            # bash <(curl -s https://codecov.io/bash) 
+    - name: "upload codecov"
+      run: bash <(curl -s https://codecov.io/bash)                     
