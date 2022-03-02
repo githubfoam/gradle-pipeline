@@ -26,6 +26,8 @@ jobs:
             pwd
             ls -lai
             cd app6 && chmod +x gradlew
+            pwd
+            ls -lai
             # ./gradlew clean check
             # ./gradlew clean build
             # bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)          
