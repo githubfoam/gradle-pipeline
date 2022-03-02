@@ -2,7 +2,7 @@ name: "jacoco coveralls Gradle CI"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ test ]
   schedule:
       - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month  
 

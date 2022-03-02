@@ -2,7 +2,7 @@ name: "findbugs blackduckcopilot Gradle CI"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ test ]
 
 
 
