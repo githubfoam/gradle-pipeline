@@ -39,4 +39,5 @@ jobs:
       run: |
         cd app5 && chmod +x gradlew
         ./gradlew clean build
-        ./gradlew jacocoTestReport coveralls            
+        # ./gradlew jacocoTestReport coveralls
+        ./gradlew test jacocoTestReport coveralls            
